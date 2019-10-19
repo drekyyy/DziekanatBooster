@@ -1,13 +1,26 @@
-const mongoose = require('mongoose');
-// const student = mongoose.model('Student');
 
+const {Auth} = require('../firebase/index')
 
-exports.something = async (req, res, next) => {
-    next();
+exports.form = async (req, res, next) => {
+   res.render('form.pug', {
+       msg: 'Sign Up to tremendous dziekanat booster'
+   })
 };
-exports.login = async (req, res) => {
-    res.render('login.pug', {
-        mesycz: 'DziekanatBooster - Good Luck 💛',
+
+exports.home = async (req, res) => {
+    res.render('home.pug', {
+        mesycz: 'DziekanatBooster - Good Luck 💛 HOMEPAGE',
     });
-
 };
+
+exports.register = async (req, res) => {
+    try {
+        const auth = new Auth(req.body)
+        await auth.register()
+        res.render('success.pug', {
+            msg: `${req.body.email} has been registered`
+        })
+    } catch (e) {
+        return e
+    }
+}
