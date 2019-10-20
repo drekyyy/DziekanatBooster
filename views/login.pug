@@ -1,4 +1,16 @@
 extends layout
 
 block content
-    h2 #{mesycz}
+    if(message)
+      h2 #{message}
+    h1.display-4.m-b-2 #{msg}
+    
+    // login form
+    form(method='POST' action='/login')
+      div.form-group
+        label(for='email') Email:
+        input#email.form-control(type='email', placeholder='name@email.com' name='email')
+      div.form-group
+        label(for='pw') Password:
+        input#pw.form-control(type='password' name='password')
+      button#btnForm Sign in
