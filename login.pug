@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .container
+  .mp-form
+    form.login(method='POST')
+      input.login__input(type='email' name='email' placeholder='Index@email' required='')
+      input.login__input(type='password' name='password' placeholder='Password' required='')
+      button.login__input.login__input--submit(type='submit') Login
+  .register-href
+    p Nie masz konta? 
+    a(href='register') Zarejestruj sie;
+  .mp-bottom
+    .bottom-numbers
+      h4 ikona numerka
+    .bottom-numbers
+      h4 ikona liczby osob
